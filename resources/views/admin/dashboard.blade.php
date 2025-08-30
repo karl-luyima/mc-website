@@ -65,7 +65,7 @@
                     <tr>
                         <td class="p-2 border">{{ $m->name }}</td>
                         <td class="p-2 border">{{ $m->email }}</td>
-                        <td class="p-2 border">{{ $m->content }}</td>
+                        <td class="p-2 border">{{ $m->message}}</td>
                         <td class="p-2 border">
                             <form method="POST" action="{{ route('admin.messages.reply', $m->id) }}">
                                 @csrf

@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('messages', function (Blueprint $table) {
-        $table->id('messageID');
-        $table->string('name');
-        $table->string('email');
-        $table->text('message');
-        $table->string('status')->default('Unread'); // Unread / Read
-        $table->timestamps();
-        });
+    $table->id();
+    $table->string('name');
+    $table->string('email');
+    $table->text('message');   
+    $table->string('status')->default('Unread');
+    $table->timestamps();
+});
+
+        
     }
 
     /**

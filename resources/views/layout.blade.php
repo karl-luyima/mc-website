@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheila Muwanga</title>
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -36,13 +36,21 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="socials">
-            <a href="https://wa.me/256773486911" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
-            <a href="smn_81@yahoo.com"><i class="fas fa-envelope fa-2x"></i></a>
-        </div>
-        <p>&copy; {{ date('Y') }} Sheila Muwanga. All Rights Reserved.</p>
-    </footer>
+    <!-- Footer -->
+<footer>
+    <div class="socials">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/256773486911" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+        <!-- Email -->
+        <a href="mailto:smn_81@yahoo.com" aria-label="Email">
+            <i class="fas fa-envelope fa-2x"></i>
+        </a>
+    </div>
+    <p>&copy; {{ date('Y') }} Sheila Muwanga. All Rights Reserved.</p>
+</footer>
+
 
 </body>
 </html>

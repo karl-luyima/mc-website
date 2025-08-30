@@ -8,19 +8,19 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             <!-- Service Card -->
             <div class="service-card opacity-0 p-10 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105 hover:shadow-2xl">
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Weddings</h3>
+                <h3 class="text-xl md:text-2xl font-semibold text-black">Weddings</h3>
             </div>
 
             <div class="service-card opacity-0 p-10 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105 hover:shadow-2xl">
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Corporate Events</h3>
+                <h3 class="text-xl md:text-2xl font-semibold text-black">Corporate Events</h3>
             </div>
 
             <div class="service-card opacity-0 p-10 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105 hover:shadow-2xl">
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Parties</h3>
+                <h3 class="text-xl md:text-2xl font-semibold text-black">Parties</h3>
             </div>
 
             <div class="service-card opacity-0 p-10 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105 hover:shadow-2xl">
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Conferences</h3>
+                <h3 class="text-xl md:text-2xl font-semibold text-black">Conferences</h3>
             </div>
         </div>
     </div>

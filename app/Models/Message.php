@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $primaryKey = 'messageID';
-
-    protected $fillable = ['name', 'email', 'message', 'status'];
+    // Use the default "id" primary key (no need to override)
+    
+    protected $fillable = [
+        'name',
+        'email',
+        'message',
+        'status',
+    ];
 }
