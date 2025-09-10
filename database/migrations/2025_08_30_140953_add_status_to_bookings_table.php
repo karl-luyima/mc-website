@@ -9,13 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
-    Schema::table('bookings', function (Blueprint $table) {
-        $table->enum('status', ['pending', 'approved', 'denied'])->default('pending');
-    });
-}
-
+    public function up(): void
+    {
+        Schema::table('bookings', function (Blueprint $table) {
+            if (!Schema::hasColumn('bookings', 'status')) {
+                $table->enum('status', ['pending', 'approved', 'denied'])
+                      ->default('pending');
+            }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -23,7 +25,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            //
+            if (Schema::hasColumn('bookings', 'status')) {
+                $table->dropColumn('status');
+            }
         });
     }
 };

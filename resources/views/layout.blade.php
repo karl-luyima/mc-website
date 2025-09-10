@@ -44,7 +44,7 @@
             <i class="fab fa-whatsapp fa-2x"></i>
         </a>
         <!-- Email -->
-        <a href="mailto:smn_81@yahoo.com" aria-label="Email">
+        <a href="mailto:sheilamuwanga75@gmail.com" aria-label="Email">
             <i class="fas fa-envelope fa-2x"></i>
         </a>
     </div>

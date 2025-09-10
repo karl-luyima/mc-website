@@ -66,7 +66,7 @@
                     </a>
 
                     <!-- Email -->
-                    <a href="mailto:smn_81@yahoo.com" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 transition px-5 py-3 rounded-xl">
+                    <a href="mailto:sheilamuwanga75@gmail.com" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 transition px-5 py-3 rounded-xl">
                         <i class="fas fa-envelope text-2xl text-yellow-300"></i>
                         <span class="text-lg">smn_81@yahoo.com</span>
                     </a>
