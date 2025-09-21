@@ -5,6 +5,8 @@ use App\Http\Controllers\MCController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Mail;
+
 
 // ----------------------------
 // Public Pages
@@ -47,6 +49,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/messages/{id}/read', [AdminController::class, 'markRead'])->name('messages.read');
 
     Route::post('/admin/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])
-    ->name('admin.bookings.status');
+        ->name('admin.bookings.status');
 
+    // Test Email
+    Route::get('/test-email', function () {
+        try {
+            $toEmail = config('mail.from.address'); // safer than env()
+
+            Mail::raw('This is a test email from Laravel using Gmail SMTP.', function ($message) use ($toEmail) {
+                $message->to($toEmail)
+                    ->subject('Laravel Gmail SMTP Test');
+            });
+
+            return "✅ Email sent successfully to {$toEmail}!";
+        } catch (\Exception $e) {
+            return "❌ Error sending email: " . $e->getMessage();
+        }
+    });
 });
