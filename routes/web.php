@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+
+// Controllers
 use App\Http\Controllers\MCController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 // ----------------------------
 // Public Pages
@@ -24,18 +28,30 @@ Route::get('/book', [BookingController::class, 'showBookingForm'])->name('bookin
 Route::post('/book', [BookingController::class, 'store'])->name('booking.submit');
 
 // ----------------------------
-// MC Login & Logout (Custom Admin Auth)
+// MC/Admin Login & Logout
 // ----------------------------
 Route::get('/login', [MCController::class, 'showLogin'])->name('admin.login');
 Route::post('/login', [MCController::class, 'login'])->name('admin.login.submit');
 Route::post('/logout', [MCController::class, 'logout'])->name('admin.logout');
 
 // ----------------------------
-// Admin Routes (Protected with custom middleware 'admin.auth')
+// Admin Password Reset Routes (accessible without auth)
 // ----------------------------
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware('admin.auth') // Make sure you have this middleware
+    ->group(function () {
+        Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+        Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+        Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+        Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+    });
+
+// ----------------------------
+// Admin Routes (Protected with 'admin.auth' middleware)
+// ----------------------------
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('admin.auth')
     ->group(function () {
 
         // Dashboard
@@ -43,8 +59,7 @@ Route::prefix('admin')
 
         // Bookings Management
         Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('bookings');
-        Route::post('/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])
-            ->name('bookings.status');
+        Route::post('/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])->name('bookings.status');
 
         // Messages Management
         Route::get('/messages', [AdminController::class, 'adminMessages'])->name('messages');
@@ -55,12 +70,9 @@ Route::prefix('admin')
         Route::get('/test-email', function () {
             try {
                 $toEmail = config('mail.from.address');
-
                 Mail::raw('This is a test email from Laravel using Gmail SMTP.', function ($message) use ($toEmail) {
-                    $message->to($toEmail)
-                        ->subject('Laravel Gmail SMTP Test');
+                    $message->to($toEmail)->subject('Laravel Gmail SMTP Test');
                 });
-
                 return "✅ Email sent successfully to {$toEmail}!";
             } catch (\Exception $e) {
                 return "❌ Error sending email: " . $e->getMessage();

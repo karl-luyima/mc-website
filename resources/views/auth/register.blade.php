@@ -1,47 +1,46 @@
 @extends('layout')
 
 @section('content')
-<section class="form-section">
-    <div class="form-container">
-        <h2 class="form-title">Register</h2>
+<section class="register-form py-20 bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto max-w-md bg-white p-10 rounded-3xl shadow-2xl">
+        <h2 class="text-3xl font-bold mb-6 text-center text-purple-700">Register</h2>
 
         @if ($errors->any())
-            <div class="alert alert-error">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+            <ul class="list-disc pl-5">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
-        <form method="POST" action="{{ route('register.submit') }}">
+        <form method="POST" action="{{ route('register.submit') }}" class="space-y-4">
             @csrf
 
-            <div class="form-group">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" id="name" name="name" class="form-input" value="{{ old('name') }}" required>
-            </div>
+            <input type="text" name="name" placeholder="Full Name" value="{{ old('name') }}"
+                class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500" required>
 
-            <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-input" value="{{ old('email') }}" required>
-            </div>
+            <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500" required>
 
-            <div class="form-group">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-input" required>
-            </div>
+            <input type="password" name="password" placeholder="Password"
+                class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500" required>
 
-            <div class="form-group">
-                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" class="form-input" required>
-            </div>
+            <input type="password" name="password_confirmation" placeholder="Confirm Password"
+                class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500" required>
 
-            <div class="form-actions">
-                <button type="submit" class="btn">Register</button>
-            </div>
+            <button type="submit"
+                class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl shadow">
+                Register
+            </button>
         </form>
+
+        <!-- Back to Login Link -->
+        <p class="mt-4 text-center text-gray-600">
+            Already have an account?
+            <a href="{{ route('login') }}" class="text-purple-600 hover:underline">Login here</a>
+        </p>
     </div>
 </section>
 @endsection

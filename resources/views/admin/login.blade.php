@@ -32,7 +32,8 @@
         </form>
 
         <p class="mt-6 text-center text-gray-500">
-            Forgot your password? <a href="{{ route('password.request') }}" class="text-purple-600 hover:underline">Reset here</a>
+            Forgot your password? 
+            <a href="{{ route('admin.password.request') }}" class="text-purple-600 hover:underline">Reset here</a>
         </p>
     </div>
 </section>

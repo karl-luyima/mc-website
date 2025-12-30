@@ -1,33 +1,30 @@
 @extends('layout')
 
 @section('content')
-<section class="form-section">
-    <div class="form-container">
-        <h2 class="form-title">Login</h2>
+<section class="login-form py-20 bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto max-w-md bg-white p-10 rounded-3xl shadow-2xl relative">
+        <h2 class="text-3xl font-bold mb-6 text-center text-purple-700">MC Login</h2>
 
         @if(session('error'))
-            <div class="alert alert-error">
-                {{ session('error') }}
-            </div>
+        <p class="mb-4 text-red-600">{{ session('error') }}</p>
         @endif
 
-        <form method="POST" action="{{ route('login.submit') }}">
+        <form method="POST" action="{{ route('admin.login.submit') }}" class="space-y-4">
             @csrf
+            <input type="email" name="email" placeholder="Email" class="w-full p-3 border rounded-xl" required>
+            <input type="password" name="password" placeholder="Password" class="w-full p-3 border rounded-xl" required>
 
-            <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-input" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-input" required>
-            </div>
-
-            <div class="form-actions">
-                <button type="submit" class="btn">Login</button>
-            </div>
+            <button type="submit" class="bg-purple-600 text-white w-full py-3 rounded-xl hover:bg-purple-700 shadow">
+                Login
+            </button>
         </form>
+
+        <p class="mt-6 text-center text-gray-500">
+            Forgot your password?
+            <a href="{{ route('admin.password.request') }}" class="text-purple-600 hover:underline">
+                Reset here
+            </a>
+        </p>
     </div>
 </section>
 @endsection
