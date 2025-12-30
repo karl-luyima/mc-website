@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name', 'Sheila Muwanga MC') }}</title>
 
-    <!-- Tailwind CDN (optional) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
@@ -19,30 +20,71 @@
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/mic.png') }}" type="image/png">
-
-    <title>Sheila Muwanga MC</title>
 </head>
 
 <body class="font-poppins text-gray-800">
 
-    <!-- Header -->
+    <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
-            <div class="logo text-2xl font-bold text-purple-700">Sheila Muwanga</div>
+            <a href="{{ url('/') }}" class="text-2xl font-bold text-purple-700">Sheila Muwanga</a>
+
+            <!-- Desktop Menu -->
             <nav>
-                <ul class="flex gap-6 text-gray-700 font-medium">
-                    <li><a href="{{ url('/') }}" class="hover:text-purple-600 transition">Home</a></li>
-                    <li><a href="{{ url('/about') }}" class="hover:text-purple-600 transition">About</a></li>
-                    <li><a href="{{ url('/services') }}" class="hover:text-purple-600 transition">Services</a></li>
-                    <li><a href="{{ url('/gallery') }}" class="hover:text-purple-600 transition">Gallery</a></li>
-                    <li><a href="{{ url('/contact') }}" class="hover:text-purple-600 transition">Contact</a></li>
-                    <li><a href="{{ url('/book') }}" class="hover:text-purple-600 transition">Booking</a></li>
+                <ul class="hidden md:flex gap-6 font-medium">
+                    <li>
+                        <a href="{{ url('/') }}" class="text-purple-700 font-semibold">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/about') }}" class="text-purple-700 font-semibold">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/services') }}" class="text-purple-700 font-semibold">
+                            Services
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/gallery') }}" class="text-purple-700 font-semibold">
+                            Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/contact') }}" class="text-purple-700 font-semibold">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/book') }}" class="text-purple-700 font-semibold">
+                            Booking
+                        </a>
+                    </li>
                 </ul>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden focus:outline-none text-purple-700">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
             </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <ul class="flex flex-col gap-4 p-4 font-medium">
+                <li><a href="{{ url('/') }}" class="text-purple-700 font-semibold">Home</a></li>
+                <li><a href="{{ url('/about') }}" class="text-purple-700 font-semibold">About</a></li>
+                <li><a href="{{ url('/services') }}" class="text-purple-700 font-semibold">Services</a></li>
+                <li><a href="{{ url('/gallery') }}" class="text-purple-700 font-semibold">Gallery</a></li>
+                <li><a href="{{ url('/contact') }}" class="text-purple-700 font-semibold">Contact</a></li>
+                <li><a href="{{ url('/book') }}" class="text-purple-700 font-semibold">Booking</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Page Content -->
     <main>
         @yield('content')
     </main>
@@ -62,15 +104,13 @@
         </div>
     </footer>
 
-    <!-- Optional: Smooth scroll -->
+    <!-- Scripts -->
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
         });
     </script>
 </body>
