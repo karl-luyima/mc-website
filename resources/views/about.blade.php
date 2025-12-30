@@ -1,33 +1,32 @@
 @extends('layout')
 
 @section('content')
-<section class="about-section py-16 bg-gray-50">
-    <div class="container mx-auto max-w-4xl px-4 text-center">
+<section class="about-section py-20 bg-gray-50">
+    <div class="container mx-auto max-w-5xl px-4 text-center">
         <!-- Section Header -->
-        <h2 class="text-4xl font-bold text-gray-800 mb-8">
+        <h2 class="text-5xl font-extrabold text-gray-900 mb-12">
             About Sheila
         </h2>
 
-        <!-- Card Wrapper -->
-        <div class="bg-white shadow-lg rounded-2xl p-8 space-y-6">
-            <p class="text-lg leading-relaxed text-gray-700">
-                Sheila Muwanga is a passionate and professional Master of Ceremony (MC) 
-                dedicated to making your event unforgettable. With her unique blend of 
-                charm, wit, and experience, she creates memorable moments that connect 
-                with every audience.
+        <!-- Info Card -->
+        <div class="bg-white shadow-xl rounded-3xl p-10 space-y-8">
+            <p class="text-lg md:text-xl leading-relaxed text-gray-700">
+                Sheila Muwanga is a highly skilled and passionate Master of Ceremony (MC), 
+                committed to making every event memorable. With a unique combination of 
+                charm, professionalism, and wit, she creates experiences that leave lasting impressions on every audience.
             </p>
 
-            <p class="text-lg leading-relaxed text-gray-700">
-                Whether it’s weddings, corporate events, graduations, or special celebrations, 
-                Sheila ensures a smooth flow of activities while keeping guests engaged 
-                and entertained. Her mission is to turn your vision into a remarkable experience.
+            <p class="text-lg md:text-xl leading-relaxed text-gray-700">
+                From weddings and corporate events to graduations and special celebrations, 
+                Sheila ensures a seamless flow of activities while engaging and entertaining guests. 
+                Her goal is to transform your vision into an extraordinary experience.
             </p>
 
             <!-- Call to Action -->
-            <div class="mt-8">
+            <div class="mt-10">
                 <a href="{{ route('contact') }}" 
-                   class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                    Book Now
+                   class="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300">
+                    Book Sheila Now
                 </a>
             </div>
         </div>
