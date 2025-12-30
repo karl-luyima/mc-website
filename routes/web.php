@@ -7,7 +7,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Mail;
 
-
 // ----------------------------
 // Public Pages
 // ----------------------------
@@ -25,45 +24,46 @@ Route::get('/book', [BookingController::class, 'showBookingForm'])->name('bookin
 Route::post('/book', [BookingController::class, 'store'])->name('booking.submit');
 
 // ----------------------------
-// MC Login & Logout
+// MC Login & Logout (Custom Admin Auth)
 // ----------------------------
 Route::get('/login', [MCController::class, 'showLogin'])->name('admin.login');
 Route::post('/login', [MCController::class, 'login'])->name('admin.login.submit');
 Route::post('/logout', [MCController::class, 'logout'])->name('admin.logout');
 
 // ----------------------------
-// Admin Routes (Protected)
+// Admin Routes (Protected with custom middleware 'admin.auth')
 // ----------------------------
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('admin.auth') // Make sure you have this middleware
+    ->group(function () {
 
-    // Dashboard
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        // Dashboard
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-    // Bookings Management
-    Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('bookings');
-    Route::post('/bookings/{id}/status', [BookingController::class, 'updateStatus'])->name('bookings.status');
+        // Bookings Management
+        Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('bookings');
+        Route::post('/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])
+            ->name('bookings.status');
 
-    // Messages Management
-    Route::get('/messages', [AdminController::class, 'adminMessages'])->name('messages');
-    Route::post('/messages/{id}/reply', [AdminController::class, 'replyMessage'])->name('messages.reply');
-    Route::post('/messages/{id}/read', [AdminController::class, 'markRead'])->name('messages.read');
+        // Messages Management
+        Route::get('/messages', [AdminController::class, 'adminMessages'])->name('messages');
+        Route::post('/messages/{id}/reply', [AdminController::class, 'replyMessage'])->name('messages.reply');
+        Route::post('/messages/{id}/read', [AdminController::class, 'markRead'])->name('messages.read');
 
-    Route::post('/admin/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])
-        ->name('admin.bookings.status');
+        // Test Email
+        Route::get('/test-email', function () {
+            try {
+                $toEmail = config('mail.from.address');
 
-    // Test Email
-    Route::get('/test-email', function () {
-        try {
-            $toEmail = config('mail.from.address'); // safer than env()
+                Mail::raw('This is a test email from Laravel using Gmail SMTP.', function ($message) use ($toEmail) {
+                    $message->to($toEmail)
+                        ->subject('Laravel Gmail SMTP Test');
+                });
 
-            Mail::raw('This is a test email from Laravel using Gmail SMTP.', function ($message) use ($toEmail) {
-                $message->to($toEmail)
-                    ->subject('Laravel Gmail SMTP Test');
-            });
-
-            return "✅ Email sent successfully to {$toEmail}!";
-        } catch (\Exception $e) {
-            return "❌ Error sending email: " . $e->getMessage();
-        }
+                return "✅ Email sent successfully to {$toEmail}!";
+            } catch (\Exception $e) {
+                return "❌ Error sending email: " . $e->getMessage();
+            }
+        });
     });
-});
