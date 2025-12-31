@@ -12,15 +12,30 @@ use Illuminate\Support\Facades\Session;
 
 class MCController extends Controller
 {
-    private $adminEmail = 'smn_81@yahoo.com';
+    private $adminEmail = 'sheilamuwanga75@gmail.com';
     private $adminPassword = 'luyimakarl1K';
 
     // Public pages
-    public function index() { return view('home'); }
-    public function about() { return view('about'); }
-    public function services() { return view('services'); }
-    public function gallery() { return view('gallery'); }
-    public function contact() { return view('contact'); }
+    public function index()
+    {
+        return view('home');
+    }
+    public function about()
+    {
+        return view('about');
+    }
+    public function services()
+    {
+        return view('services');
+    }
+    public function gallery()
+    {
+        return view('gallery');
+    }
+    public function contact()
+    {
+        return view('contact');
+    }
 
     public function sendMessage(Request $request)
     {
@@ -35,18 +50,20 @@ class MCController extends Controller
     }
 
     // Show login form
-    public function showLogin() {
+    public function showLogin()
+    {
         return view('admin.login');
     }
 
     // Handle login
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        if($request->email === $this->adminEmail && $request->password === $this->adminPassword){
+        if ($request->email === $this->adminEmail && $request->password === $this->adminPassword) {
             Session::put('admin_logged_in', true);
             return redirect()->route('admin.dashboard');
         }
@@ -55,7 +72,8 @@ class MCController extends Controller
     }
 
     // Logout
-    public function logout() {
+    public function logout()
+    {
         Session::forget('admin_logged_in');
         return redirect()->route('admin.login')->with('success', 'Logged out successfully.');
     }
@@ -70,7 +88,7 @@ class MCController extends Controller
         $bookings = Booking::latest()->paginate(5);
         $messages = Message::latest()->paginate(5);
 
-        return view('admin.dashboard', compact('bookings','messages'));
+        return view('admin.dashboard', compact('bookings', 'messages'));
     }
 
     // Admin messages view
@@ -97,5 +115,30 @@ class MCController extends Controller
         Mail::to($message->email)->send(new MessageReply($message));
 
         return back()->with('success', 'Reply sent successfully!');
+    }
+
+    // -----------------------------
+    // Registration Methods
+    // -----------------------------
+
+    // Show registration form
+    public function showRegister()
+    {
+        return view('admin.register');
+    }
+
+    // Handle registration
+    public function register(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        // For simplicity, update controller properties (or save to DB if you want)
+        $this->adminEmail = $request->email;
+        $this->adminPassword = $request->password;
+
+        return redirect()->route('admin.login')->with('success', 'Registration successful. You can now log in.');
     }
 }

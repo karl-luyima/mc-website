@@ -35,6 +35,12 @@ Route::post('/login', [MCController::class, 'login'])->name('admin.login.submit'
 Route::post('/logout', [MCController::class, 'logout'])->name('admin.logout');
 
 // ----------------------------
+// MC/Admin Registration (public, for one-person setup)
+// ----------------------------
+Route::get('/register', [MCController::class, 'showRegister'])->name('admin.register');
+Route::post('/register', [MCController::class, 'register'])->name('admin.register.submit');
+
+// ----------------------------
 // Admin Password Reset Routes (accessible without auth)
 // ----------------------------
 Route::prefix('admin')
