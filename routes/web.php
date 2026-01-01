@@ -41,47 +41,42 @@ Route::get('/register', [MCController::class, 'showRegister'])->name('admin.regi
 Route::post('/register', [MCController::class, 'register'])->name('admin.register.submit');
 
 // ----------------------------
-// Admin Password Reset Routes (accessible without auth)
+// Admin Password Reset Routes
 // ----------------------------
-Route::prefix('admin')
-    ->name('admin.')
-    ->group(function () {
-        Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-        Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-        Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-        Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+});
+
+// ----------------------------
+// Admin Routes (Protected via Session Checks in Controllers)
+// ----------------------------
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    // Bookings Management
+    Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('bookings');
+    Route::post('/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])->name('bookings.status');
+
+    // Messages Management
+    Route::get('/messages', [AdminController::class, 'adminMessages'])->name('messages');
+    Route::post('/messages/{id}/reply', [AdminController::class, 'replyMessage'])->name('messages.reply');
+    Route::post('/messages/{id}/read', [AdminController::class, 'markRead'])->name('messages.read');
+
+    // Test Email
+    Route::get('/test-email', function () {
+        try {
+            $toEmail = config('mail.from.address');
+            Mail::raw('This is a test email from Laravel using Gmail SMTP.', function ($message) use ($toEmail) {
+                $message->to($toEmail)->subject('Laravel Gmail SMTP Test');
+            });
+            return "✅ Email sent successfully to {$toEmail}!";
+        } catch (\Exception $e) {
+            return "❌ Error sending email: " . $e->getMessage();
+        }
     });
-
-// ----------------------------
-// Admin Routes (Protected with 'admin.auth' middleware)
-// ----------------------------
-Route::prefix('admin')
-    ->name('admin.')
-    ->middleware('admin.auth')
-    ->group(function () {
-
-        // Dashboard
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
-        // Bookings Management
-        Route::get('/bookings', [BookingController::class, 'adminIndex'])->name('bookings');
-        Route::post('/bookings/{id}/status', [AdminController::class, 'updateBookingStatus'])->name('bookings.status');
-
-        // Messages Management
-        Route::get('/messages', [AdminController::class, 'adminMessages'])->name('messages');
-        Route::post('/messages/{id}/reply', [AdminController::class, 'replyMessage'])->name('messages.reply');
-        Route::post('/messages/{id}/read', [AdminController::class, 'markRead'])->name('messages.read');
-
-        // Test Email
-        Route::get('/test-email', function () {
-            try {
-                $toEmail = config('mail.from.address');
-                Mail::raw('This is a test email from Laravel using Gmail SMTP.', function ($message) use ($toEmail) {
-                    $message->to($toEmail)->subject('Laravel Gmail SMTP Test');
-                });
-                return "✅ Email sent successfully to {$toEmail}!";
-            } catch (\Exception $e) {
-                return "❌ Error sending email: " . $e->getMessage();
-            }
-        });
-    });
+});

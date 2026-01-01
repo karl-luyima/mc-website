@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
-use App\Models\Booking; // ensure you have Booking model
+use App\Models\Booking;
 
 class AdminController extends Controller
 {
@@ -27,5 +27,32 @@ class AdminController extends Controller
         return back()->with('success', 'Message marked as read.');
     }
 
-    
+    // Reply to a message
+    public function replyMessage(Request $request, $id)
+    {
+        $request->validate([
+            'reply' => 'required|string',
+        ]);
+
+        $message = Message::findOrFail($id);
+        $message->reply = $request->reply;
+        $message->status = 'Replied';
+        $message->save();
+
+        return back()->with('success', 'Reply sent successfully.');
+    }
+
+    // Update booking status
+    public function updateBookingStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Pending,Approved,Rejected',
+        ]);
+
+        $booking = Booking::findOrFail($id);
+        $booking->status = $request->status;
+        $booking->save();
+
+        return back()->with('success', 'Booking status updated successfully.');
+    }
 }
