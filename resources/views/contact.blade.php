@@ -9,47 +9,7 @@
     <div class="container mx-auto px-6 lg:px-12">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-            <!-- Contact Form -->
-            <article class="bg-white p-10 md:p-12 shadow-2xl rounded-3xl border border-gray-200 transform transition-all duration-500 hover:scale-[1.02]">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-gray-800 tracking-tight animate-fadeIn text-center lg:text-left">
-                    Contact Sheila
-                </h2>
-
-                @if(session('success'))
-                    <div class="mb-6 p-4 bg-green-100 text-green-800 rounded-lg border border-green-200 animate-fadeIn shadow-sm">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                <form method="POST" action="{{ route('contact.send') }}" class="space-y-6">
-                    @csrf
-
-                    <div>
-                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
-                        <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                               aria-label="Full Name"
-                               class="w-full px-6 py-3 border border-gray-300 rounded-xl shadow-inner focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-lg transition duration-300">
-                    </div>
-
-                    <div>
-                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
-                        <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                               aria-label="Email Address"
-                               class="w-full px-6 py-3 border border-gray-300 rounded-xl shadow-inner focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-lg transition duration-300">
-                    </div>
-
-                    <div>
-                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Your Message</label>
-                        <textarea name="message" id="message" required
-                                  class="w-full px-6 py-4 border border-gray-300 rounded-xl shadow-inner focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 resize-none h-40 hover:shadow-lg">{{ old('message') }}</textarea>
-                    </div>
-
-                    <button type="submit"
-                            class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl shadow-lg transition transform hover:-translate-y-1 hover:shadow-2xl">
-                        Send Message
-                    </button>
-                </form>
-            </article>
+            
 
             <!-- Contact Info Card -->
             <aside class="bg-gradient-to-br from-purple-600 to-indigo-700 p-10 rounded-3xl shadow-2xl text-white flex flex-col justify-center space-y-8">

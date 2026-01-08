@@ -21,39 +21,31 @@
                 Book Now
             </a>
 
-            <!-- Login as MC button -->
-            <a href="{{ route('admin.login') }}"
-                class="px-8 py-3 bg-white text-purple-700 font-semibold rounded-full shadow-lg hover:bg-gray-100 transition transform hover:-translate-y-1">
-                Login as MC
-            </a>
-        </div>
-    </div>
-</section>
 
-<!-- Tailwind Fade-in Animation -->
-<style>
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
+            <!-- Tailwind Fade-in Animation -->
+            <style>
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
 
-    .animate-fadeIn {
-        animation: fadeIn 1s ease-out forwards;
-    }
+                .animate-fadeIn {
+                    animation: fadeIn 1s ease-out forwards;
+                }
 
-    .animate-fadeIn.delay-150 {
-        animation-delay: 0.15s;
-    }
+                .animate-fadeIn.delay-150 {
+                    animation-delay: 0.15s;
+                }
 
-    .animate-fadeIn.delay-300 {
-        animation-delay: 0.3s;
-    }
-</style>
-@endsection
+                .animate-fadeIn.delay-300 {
+                    animation-delay: 0.3s;
+                }
+            </style>
+            @endsection

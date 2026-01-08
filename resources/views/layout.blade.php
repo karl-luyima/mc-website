@@ -79,7 +79,7 @@
                 <li><a href="{{ url('/services') }}" class="text-purple-700 font-semibold">Services</a></li>
                 <li><a href="{{ url('/gallery') }}" class="text-purple-700 font-semibold">Gallery</a></li>
                 <li><a href="{{ url('/contact') }}" class="text-purple-700 font-semibold">Contact</a></li>
-                <li><a href="{{ url('/book') }}" class="text-purple-700 font-semibold">Booking</a></li>
+
             </ul>
         </div>
     </header>
