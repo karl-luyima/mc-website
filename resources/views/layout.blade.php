@@ -21,7 +21,7 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
 </head>
- 
+
 <body class="font-poppins text-gray-800">
 
     <!-- Navbar -->
