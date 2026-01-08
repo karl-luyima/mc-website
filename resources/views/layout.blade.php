@@ -57,11 +57,7 @@
                             Contact
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('/book') }}" class="text-purple-700 font-semibold">
-                            Booking
-                        </a>
-                    </li>
+                    
                 </ul>
 
                 <!-- Mobile Menu Button -->
