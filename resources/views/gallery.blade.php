@@ -1,9 +1,9 @@
 @extends('layout')
-
+@section('title', 'Gallery | Sheila Muwanga MC')
 @section('content')
-<section class="gallery py-16 bg-gray-100">
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-12 text-gray-800">Gallery</h2>
+<section class="gallery py-16 md:py-20 bg-gray-100">
+    <div class="container mx-auto text-center px-4 sm:px-6 lg:px-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-800">Gallery</h2>
 
         <div class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
             @php
@@ -12,7 +12,10 @@
 
             @foreach($images as $index => $image)
             <div class="mySlides fade" style="display: {{ $index == 0 ? 'block' : 'none' }};">
-                <img src="{{ asset('images/' . $image) }}" loading="lazy" alt="Gallery Image {{ $index + 1 }}" class="w-full h-auto md:h-96 object-cover rounded-xl">
+                <img src="{{ asset('images/' . $image) }}"
+                    loading="lazy"
+                    alt="Gallery Image {{ $index + 1 }}"
+                    class="w-full h-64 sm:h-80 md:h-96 object-cover rounded-xl">
             </div>
             @endforeach
 
@@ -33,11 +36,11 @@
 
     @keyframes fadeEffect {
         from {
-            opacity: 0.4
+            opacity: 0.4;
         }
 
         to {
-            opacity: 1
+            opacity: 1;
         }
     }
 
@@ -64,8 +67,10 @@
         setTimeout(showSlides, 4000);
     }
 
+    // Initial display
     showSlides();
 
+    // Dot navigation
     Array.from(dots).forEach((dot, i) => {
         dot.addEventListener("click", () => showSlides(i));
     });
