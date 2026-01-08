@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/mic.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
 </head>
-
+ 
 <body class="font-poppins text-gray-800">
 
     <!-- Navbar -->
