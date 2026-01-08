@@ -26,7 +26,8 @@
                     </a>
 
                     <!-- Email -->
-                    <a href="mailto:sheilamuwanga75@gmail.com"
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sheilamuwanga75@gmail.com&su=Inquiry%20from%20Website"
+                        target="_blank"
                         class="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl transition bg-white/10 hover:bg-white/20">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-300 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />

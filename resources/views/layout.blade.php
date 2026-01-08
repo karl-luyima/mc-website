@@ -71,7 +71,10 @@
                 <a href="https://wa.me/256773486911" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition text-2xl">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="mailto:sheilamuwanga75@gmail.com" aria-label="Email" class="hover:text-yellow-300 transition text-2xl">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sheilamuwanga75@gmail.com&su=MC%20Inquiry%20from%20Website"
+                    target="_blank"
+                    aria-label="Email"
+                    class="hover:text-yellow-300 transition text-2xl">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
