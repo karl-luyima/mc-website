@@ -11,7 +11,7 @@
         <!-- Info Card -->
         <div class="bg-white shadow-xl rounded-3xl p-6 sm:p-8 md:p-10 space-y-6 sm:space-y-8">
             <p class="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700">
-                Sheila Muwanga is a highly skilled and passionate Master of Ceremony (MC),
+                Sheila Muwanga is a highly skilled and passionate Mistress of Ceremony (MC),
                 committed to making every event memorable. With a unique combination of
                 charm, professionalism, and wit, she creates experiences that leave lasting impressions on every audience.
             </p>
