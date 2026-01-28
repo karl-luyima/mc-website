@@ -1,9 +1,18 @@
 @extends('layout')
 @section('title', 'Gallery | Sheila Muwanga MC')
 @section('content')
+
 <section class="gallery py-16 md:py-20 bg-gray-100">
     <div class="container mx-auto text-center px-4 sm:px-6 lg:px-12">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-800">Gallery</h2>
+
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-800">
+            Gallery
+        </h2>
+
+        <!-- Corporate subtitle -->
+        <p class="text-gray-600 max-w-2xl mx-auto mb-12">
+            Highlights from corporate engagements, conferences, and professional events.
+        </p>
 
         <div class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
             @php
@@ -56,14 +65,18 @@
 
     function showSlides(n = null) {
         if (n !== null) slideIndex = n;
+
         for (let i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
             dots[i].classList.remove("active");
         }
+
         slideIndex++;
         if (slideIndex > slides.length) slideIndex = 1;
+
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].classList.add("active");
+
         setTimeout(showSlides, 4000);
     }
 
@@ -75,4 +88,5 @@
         dot.addEventListener("click", () => showSlides(i));
     });
 </script>
+
 @endsection
