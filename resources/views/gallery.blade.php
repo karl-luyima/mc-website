@@ -7,7 +7,7 @@
 
         <div class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
             @php
-            $images = ['image5.jpg','image6.jpg','image2.jpg','image3.jpg','image4.jpg'];
+            $images = ['image6.jpg','image2.jpg','image3.jpg','image4.jpg'];
             @endphp
 
             @foreach($images as $index => $image)

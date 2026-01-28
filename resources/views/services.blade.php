@@ -4,7 +4,7 @@
 <section class="services py-20 bg-gradient-to-b from-purple-50 to-white">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <h2 class="text-4xl sm:text-5xl font-extrabold mb-12 text-gray-800 tracking-tight">
-            Our Services
+            Her Services
         </h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
