@@ -15,27 +15,29 @@
 
         <div
             id="galleryContainer"
-            class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
+            class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg"
+        >
 
             @php
-            $images = ['image1.jpg','image6.jpg','image2.jpg','image3.jpg','image4.jpg','image7.jpg'];
+                $images = ['image1.jpg','image6.jpg','image2.jpg','image3.jpg','image4.jpg','image7.jpg'];
             @endphp
 
             <div id="slider" class="flex transition-transform duration-500 ease-in-out">
                 @foreach($images as $image)
-                <div class="w-full flex-shrink-0 flex justify-center items-center">
-                    <img
-                        src="{{ asset('images/' . $image) }}"
-                        loading="lazy"
-                        alt="Gallery Image"
-                        class="object-contain rounded-xl max-h-[80vh]">
-                </div>
+                    <div class="w-full flex-shrink-0 flex justify-center items-center">
+                        <img
+                            src="{{ asset('images/' . $image) }}"
+                            loading="lazy"
+                            alt="Gallery Image"
+                            class="object-contain rounded-xl max-h-[80vh]"
+                        >
+                    </div>
                 @endforeach
             </div>
 
             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 @foreach($images as $i => $img)
-                <span class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer {{ $i === 0 ? 'active' : '' }}"></span>
+                    <span class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer {{ $i === 0 ? 'active' : '' }}"></span>
                 @endforeach
             </div>
 
