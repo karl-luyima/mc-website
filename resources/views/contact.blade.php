@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Contact | Sheila Muwanga MC')
 @section('content')
-<section class="contact py-16 md:py-20 bg-gradient-to-b from-purple-50 to-white relative overflow-hidden">
+<section class="contact py-16 md:py-20 bg-gradient-to-b from-purple-50 to-white relative overflow-visible">
     <!-- Background Accents -->
     <div class="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-purple-200 rounded-full blur-3xl opacity-30 -z-10"></div>
     <div class="absolute bottom-0 right-0 w-56 sm:w-72 h-56 sm:h-72 bg-indigo-200 rounded-full blur-3xl opacity-30 -z-10"></div>
@@ -32,21 +32,31 @@
                         </span>
                     </a>
 
-                    <!-- Email (Universal) -->
-                    <a href="mailto:sheilamuwanga75@gmail.com?subject=Inquiry%20from%20Website"
-                        onclick="event.preventDefault();
-                                window.open('https://mail.google.com/mail/?view=cm&fs=1&to=sheilamuwanga75@gmail.com&su=Inquiry%20from%20Website','_blank');"
-                        class="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl transition bg-white/10 hover:bg-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6 text-yellow-300 flex-shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                        </svg>
-                        <span class="text-white text-sm sm:text-base break-all">
-                            sheilamuwanga75@gmail.com
-                        </span>
-                    </a>
+                    <!-- Email Dropdown -->
+                    <div class="relative inline-block text-left">
+                        <button id="emailBtn"
+                            class="flex items-center gap-2 px-4 sm:px-5 py-3 rounded-xl transition bg-white/10 hover:bg-white/20">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-yellow-300 flex-shrink-0"
+                                fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                            <span>Email Sheila</span>
+                            <i class="fas fa-caret-down ml-auto"></i>
+                        </button>
+
+                        <div id="emailDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white text-gray-800 rounded-lg shadow-lg z-50">
+                            <a href="mailto:sheilamuwanga75@gmail.com"
+                                class="block px-4 py-2 hover:bg-gray-100">Default Email App</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sheilamuwanga75@gmail.com"
+                                target="_blank" class="block px-4 py-2 hover:bg-gray-100">Gmail</a>
+                            <a href="https://outlook.live.com/mail/deeplink/compose?to=sheilamuwanga75@gmail.com"
+                                target="_blank" class="block px-4 py-2 hover:bg-gray-100">Outlook</a>
+                            <a href="https://mail.yahoo.com/d/compose?to=sheilamuwanga75@gmail.com"
+                                target="_blank" class="block px-4 py-2 hover:bg-gray-100">Yahoo Mail</a>
+                        </div>
+                    </div>
 
                 </div>
             </aside>
@@ -72,4 +82,22 @@
         animation: fadeIn 0.8s ease-out forwards;
     }
 </style>
+
+<script>
+    // Email dropdown toggle
+    const emailBtn = document.getElementById('emailBtn');
+    const emailDropdown = document.getElementById('emailDropdown');
+
+    emailBtn.addEventListener('click', () => {
+        emailDropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function(event) {
+        if (!emailBtn.contains(event.target) && !emailDropdown.contains(event.target)) {
+            emailDropdown.classList.add('hidden');
+        }
+    });
+</script>
+
 @endsection

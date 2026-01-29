@@ -64,11 +64,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-purple-700 text-white py-8 mt-12">
+    <footer class="bg-purple-700 text-white py-8 mt-12 relative">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 px-6 sm:px-8 lg:px-12">
             <p class="text-center md:text-left">&copy; {{ date('Y') }} Sheila Muwanga. All Rights Reserved.</p>
 
-            <div class="flex gap-6">
+            <div class="flex gap-6 items-center relative">
+
                 <!-- WhatsApp -->
                 <a href="https://wa.me/256773486911"
                     target="_blank"
@@ -77,16 +78,40 @@
                     <i class="fab fa-whatsapp"></i>
                 </a>
 
-                <!-- Email (works with ANY mail app) -->
-                <a href="mailto:sheilamuwanga75@gmail.com?subject=MC%20Inquiry%20from%20Website"
-                    aria-label="Email"
-                    title="Email Sheila"
-                    class="hover:text-yellow-300 transition text-2xl">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <!-- Email (Hybrid: mailto + webmail options) -->
+                <div class="relative group">
+                    <!-- Main email icon (mailto) -->
+                    <a href="mailto:sheilamuwanga75@gmail.com?subject=MC%20Inquiry%20from%20Website"
+                        aria-label="Email"
+                        title="Email Sheila"
+                        class="hover:text-yellow-300 transition text-2xl flex items-center gap-2">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                    <!-- Webmail options dropdown -->
+                    <div class="absolute bottom-full mb-2 hidden group-hover:flex flex-col bg-purple-700 text-white rounded-lg shadow-lg py-2 w-44 z-50">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sheilamuwanga75@gmail.com&su=MC%20Inquiry%20from%20Website"
+                            target="_blank"
+                            class="px-4 py-2 hover:bg-purple-600 transition text-sm">
+                            Gmail
+                        </a>
+                        <a href="https://outlook.live.com/owa/?path=/mail/action/compose&to=sheilamuwanga75@gmail.com"
+                            target="_blank"
+                            class="px-4 py-2 hover:bg-purple-600 transition text-sm">
+                            Outlook
+                        </a>
+                        <a href="https://mail.yahoo.com/d/compose?to=sheilamuwanga75@gmail.com"
+                            target="_blank"
+                            class="px-4 py-2 hover:bg-purple-600 transition text-sm">
+                            Yahoo Mail
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </footer>
+
 
     <!-- Scripts -->
     <script>
