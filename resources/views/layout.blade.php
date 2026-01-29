@@ -67,13 +67,20 @@
     <footer class="bg-purple-700 text-white py-8 mt-12">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 px-6 sm:px-8 lg:px-12">
             <p class="text-center md:text-left">&copy; {{ date('Y') }} Sheila Muwanga. All Rights Reserved.</p>
+
             <div class="flex gap-6">
-                <a href="https://wa.me/256773486911" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition text-2xl">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/256773486911"
+                    target="_blank"
+                    aria-label="WhatsApp"
+                    class="hover:text-green-400 transition text-2xl">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sheilamuwanga75@gmail.com&su=MC%20Inquiry%20from%20Website"
-                    target="_blank"
+
+                <!-- Email (works with ANY mail app) -->
+                <a href="mailto:sheilamuwanga75@gmail.com?subject=MC%20Inquiry%20from%20Website"
                     aria-label="Email"
+                    title="Email Sheila"
                     class="hover:text-yellow-300 transition text-2xl">
                     <i class="fas fa-envelope"></i>
                 </a>
@@ -83,7 +90,6 @@
 
     <!-- Scripts -->
     <script>
-        // Mobile menu toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => {
